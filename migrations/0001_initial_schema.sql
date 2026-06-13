@@ -1,3 +1,4 @@
+PRAGMA foreign_keys = ON;
 CREATE TABLE roles (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE
