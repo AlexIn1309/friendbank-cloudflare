@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Entornos y Variables locales
+.env
+.env.local
+.dev.vars
+.dev.vars.local
+
+# Archivos generados por Cloudflare Wrangler
+.wrangler/
+dist/
+build/
+out/
+.mf/
+_routes.generated.json
+
+# Archivos del sistema y logs
+.DS_Store
+logs/
+*.log
