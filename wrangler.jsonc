@@ -1,12 +1,13 @@
 {
-	"name": "mi-worker",
-	"main": "index.ts",
-	"compatibility_data": "2026-06-08",
-	"d1_databases": [
-		{
-			"binding": "friendbank_db",
-			"database_name": "friendbank-db",
-			"database_id": "7246c626-de42-4771-a5b2-249344b473e4"
-		}
-	],
+  "name": "mi-worker",
+  "main": "index.ts",
+  "compatibility_date": "2026-06-08",
+  "d1_databases": [
+    {
+      "binding": "friendbank_db",
+      "database_name": "friendbank-db",
+      "database_id": "7246c626-de42-4771-a5b2-249344b473e4",
+    },
+  ],
 }
+
