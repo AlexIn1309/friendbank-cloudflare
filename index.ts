@@ -1,3 +1,8 @@
-import authRoutes from "./auth.routes";
+import { Hono } from 'hono';
+import authRoutes from "./src/routes/auth.routes";
+
+const app = new Hono();
 
 app.route("/auth", authRoutes);
+
+export default app;

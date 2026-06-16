@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 
-import { authController } from "../controllers/auth.controller";
+import { AuthController } from "../controllers/auth.controller";
 
 const auth = new Hono();
 
-auth.post("/login", authController.login);
+auth.post("/login", AuthController.login);
 
 export default auth;

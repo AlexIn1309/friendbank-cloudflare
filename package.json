@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "chanfana": "^3.3.0",
     "hono": "^4.12.25",
     "jose": "^6.2.3",
