@@ -31,7 +31,9 @@ export class SessionRepository {
 
   async revokeSession(db: D1Database, refreshToken: string): Promise<void> {
     await db
-      .prepare("UPDATE user_sessions SET revoked = 1 WHERE id = ?")
+      .prepare(
+        "UPDATE user_sessions SET revoked = 1 WHERE refresh_token_uuid = ?",
+      )
       .bind(refreshToken)
       .run();
   }

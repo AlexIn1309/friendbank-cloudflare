@@ -13,8 +13,32 @@ export class AuthController {
   static async login(c: Context<Env>) {
     try {
       const body = await c.req.json();
+      console.log(c.env.JWT_SECRET);
+      console.log(c.env.JWT_SECRET?.length);
+      const result = await authService.login(
+        c.env.friendbank_db,
+        c.env.JWT_SECRET,
+        body,
+      );
 
-      const result = await authService.login(c.env.friendbank_db, body);
+      return c.json(result, 200);
+    } catch (error) {
+      if (error instanceof AppError) {
+        return c.json({ message: error.message }, error.statusCode);
+      }
+
+      return c.json({ message: "Internal Server error" }, 500);
+    }
+  }
+  static async refreshToken(c: Context<Env>) {
+    try {
+      const body = await c.req.json();
+
+      const result = await authService.refreshToken(
+        c.env.friendbank_db,
+        c.env.JWT_SECRET,
+        body.refreshToken,
+      );
 
       return c.json(result, 200);
     } catch (error) {

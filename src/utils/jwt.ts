@@ -1,4 +1,4 @@
-import { SignJWT, VerifyJWT } from "jose";
+import { SignJWT, jwtVerify } from "jose";
 import { JwtPayloadDto } from "../dtos/auth/jwt-payloads";
 
 export async function generateJwt(
@@ -19,6 +19,8 @@ export async function verifyAccessToken(
   secret: string,
 ): Promise<JwtPayloadDto> {
   const secretKey = new TextEncoder().encode(secret);
-  const { payload } = await new VerifyJWT(token, secretKey);
+
+  const { payload } = await jwtVerify(token, secretKey);
+
   return payload as JwtPayloadDto;
 }

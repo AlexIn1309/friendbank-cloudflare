@@ -12,4 +12,29 @@ export class UserRepository {
 
     return result ?? null;
   }
+
+  async findById(db: D1Database, id: number): Promise<UserEntity | null> {
+    return (
+      (await db
+        .prepare("SELECT * FROM users WHERE id = ?")
+        .bind(id)
+        .first<UserEntity>()) ?? null
+    );
+  }
+
+  async create(
+    db: D1Database,
+    username: string,
+    passwordHash: string,
+    roleId: number,
+  ): Promise<number> {
+    const result = await db
+      .prepare(
+        "INSERT INTO users (username, password_hash, role_id) VALUES (?, ?, ?)",
+      )
+      .bind(username, passwordHash, roleId)
+      .run();
+
+    return Number(result.meta.last_row_id);
+  }
 }
